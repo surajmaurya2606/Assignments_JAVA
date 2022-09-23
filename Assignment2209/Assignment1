@@ -1,0 +1,34 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class ExceptionDemo {
+    static Scanner sc =new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int n=0;
+        System.out.println("enter number of items");
+
+        try {
+            n = sc.nextInt();
+        }catch (InputMismatchException e) {
+            System.out.println("please enter integer value");
+        }
+        int[] arr = new int[n];
+        for (int i=0; i<n; i++){
+            System.out.println("enter price for item "+(i+1));
+            try {
+                arr[i]=Integer.parseInt(sc.next());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter Integer Value");
+                i--;
+            }
+        }
+        System.out.println("Enter index for price of an item");
+        try {
+            int ind = sc.nextInt();
+            System.out.println(arr[ind]);
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Value should be less than "+n);
+        }
+    }
+}
