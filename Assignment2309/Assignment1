@@ -1,0 +1,103 @@
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+public class Assignment1 {
+
+    static Scanner sc = new Scanner(System.in);
+    static ArrayList<Student> students = new ArrayList<>();
+    static ArrayList<Course> courses = new ArrayList<>();
+    static ArrayList<CourseEnroll> courseEnrolls = new ArrayList<>();
+
+    public static void main(String[] args) {
+        //Add Courses
+        courses.add(new Course(1234, "java", 1));
+        courses.add(new Course(1235, "python", 2));
+        courses.add(new Course(1236, "AI", 1));
+        courses.add(new Course(1237, "DS", 3));
+
+        //Add Student
+        students.add(new Student("s123","ajay","aaa"));
+        students.add(new Student("s124","rohit","aaa"));
+        students.add(new Student("s125","ram","aaa"));
+        students.add(new Student("s126","raj","aaa"));
+        students.add(new Student("s127","john","aaa"));
+        students.add(new Student("s128","rohan","aaa"));
+        students.add(new Student("s129","rahul","aaa"));
+
+        //Enroll Students
+        courseEnrolls.add(new CourseEnroll("e123","s123",1234));
+        courseEnrolls.add(new CourseEnroll("e124","s123",1235));
+        courseEnrolls.add(new CourseEnroll("e125","s124",1234));
+        courseEnrolls.add(new CourseEnroll("e126","s124",1236));
+        courseEnrolls.add(new CourseEnroll("e127","s125",1234));
+        courseEnrolls.add(new CourseEnroll("e128","s125",1237));
+        courseEnrolls.add(new CourseEnroll("e129","s126",1234));
+        courseEnrolls.add(new CourseEnroll("e120","s126",1236));
+        courseEnrolls.add(new CourseEnroll("e131","s127",1234));
+        courseEnrolls.add(new CourseEnroll("e122","s127",1235));
+        courseEnrolls.add(new CourseEnroll("e133","s128",1235));
+        courseEnrolls.add(new CourseEnroll("e134","s128",1236));
+        courseEnrolls.add(new CourseEnroll("e135","s129",1237));
+        courseEnrolls.add(new CourseEnroll("e136","s129",1236));
+
+        int choice = 0;
+        do {
+            System.out.println("0. exit");
+            System.out.println("1. Add a course");
+            System.out.println("2. Add Student");
+            System.out.println("3. View Students");
+            System.out.println("4. View Courses");
+            System.out.println("5. Enroll a student into courses");
+            System.out.println("6. View Students by a particular Course");
+            choice = sc.nextInt();
+            if (choice==1) {
+                System.out.println("Enter course id, Name and duration");
+                courses.add(new Course(sc.nextInt(), sc.next(), sc.nextInt()));
+            } else if (choice==2){
+                System.out.println("Enter student id, Name and college Name");
+                students.add(new Student(sc.next(),sc.next(),sc.next()));
+            } else if (choice==3) {
+                if (students.size() == 0)
+                    System.out.println("No Students available please make one");
+                else
+                    System.out.println(students);
+            } else if (choice==4) {
+                if (courses.size()==0)
+                    System.out.println("No Courses available please make one");
+                else
+                    System.out.println(courses);
+            } else if (choice==5) {
+                if (students.size() == 0)
+                    System.out.println("No Students available please make one");
+                else
+                    System.out.println(students);
+                System.out.println("Enter Student Id");
+                String sid = sc.next();
+                if (courses.size()==0)
+                    System.out.println("No Courses available please make one");
+                else
+                    System.out.println(courses);
+                System.out.println("Enter Course Id");
+                int cid = sc.nextInt();
+                System.out.println("Enter Enrollment ID, Student ID, Course ID");
+                courseEnrolls.add(new CourseEnroll(sc.next(),sid,cid));
+            } else if (choice==6) {
+
+                if (courses.size()==0)
+                    System.out.println("No Courses available please make one");
+                else
+                    System.out.println(courses);
+                System.out.println("Enter Course Id");
+                int cid = sc.nextInt();
+
+                System.out.println(courseEnrolls.stream()
+                        .filter(courseEnroll -> courseEnroll.getCourseId()==cid)
+                        .sorted(Comparator.comparing(CourseEnroll::getEnrolmentId))
+                        .collect(Collectors.toList()));
+            }
+        }while (choice!=0);
+    }
+}
