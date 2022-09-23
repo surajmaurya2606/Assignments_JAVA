@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class CollectionAssignment2 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Member> members = new ArrayList<>();
+        int choice;
+        do {
+            System.out.println("0. exit");
+            System.out.println("1. Add member");
+            System.out.println("2. View all");
+            System.out.println("3. View By address");
+            choice = sc.nextInt();
+            if (choice==1){
+                System.out.println("Enter member id, Name and Address");
+                members.add(new Member(sc.nextInt(),sc.next(),sc.next()));
+            } else if (choice==2) {
+                if (members.size()==0)
+                    System.out.println("No Members available please make one");
+                System.out.println(members);
+            } else if (choice==3) {
+                System.out.println("Enter Address for the member");
+                if (members.size()==0)
+                    System.out.println("No Members available please make one");
+                String addr = sc.next();
+                for (Member member:members) {
+                    if (member.getAddr().equals(addr))
+                        System.out.println(member);
+                }
+            }
+        }while (choice!=0);
+
+    }
+}
