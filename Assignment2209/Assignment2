@@ -1,0 +1,28 @@
+import  java.util.Scanner;
+
+public class ExceptionAssignment2 {
+    public static void main(String[] args) throws InvalidSalaryException {
+        Scanner sc = new Scanner(System.in);
+        String name, gender;
+        Integer expSal;
+        Candidate candidate;
+
+        System.out.println("Enter Candidate details");
+        name = sc.next();
+        gender = sc.next();
+        expSal = sc.nextInt();
+        /*if(expSal<10000){
+            throw new InvalidSalaryException("Salary cannot be less than 10000");
+        }else {*/
+            candidate = new Candidate(name,gender,expSal);
+        //}
+
+        System.out.println(candidate);
+    }
+}
+
+ class InvalidSalaryException extends Exception {
+    public InvalidSalaryException(String e) {
+        super(e);
+    }
+}
