@@ -1,0 +1,48 @@
+
+public class Course {
+    private int courseId;
+    private String courseName;
+    private int courseDurationMonths;
+
+    public Course() {
+    }
+
+    public Course(int courseId, String courseName, int courseDurationMonths) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.courseDurationMonths = courseDurationMonths;
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getcourseName() {
+        return courseName;
+    }
+
+    public void setcourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public int getCourseDurationMonths() {
+        return courseDurationMonths;
+    }
+
+    public void setCourseDurationMonths(int courseDurationMonths) {
+        this.courseDurationMonths = courseDurationMonths;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseId=" + courseId +
+                ", courseName='" + courseName + '\'' +
+                ", courseDurationMonths=" + courseDurationMonths +
+                '}';
+    }
+}
