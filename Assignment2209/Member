@@ -1,0 +1,48 @@
+
+public class Member {
+    private int memberId;
+    private String name;
+    private String addr;
+
+    public Member() {
+    }
+
+    public Member(int memberId, String name, String addr) {
+        this.memberId = memberId;
+        this.name = name;
+        this.addr = addr;
+    }
+
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "memberId=" + memberId +
+                ", name='" + name + '\'' +
+                ", addr='" + addr + '\'' +
+                '}';
+    }
+}
