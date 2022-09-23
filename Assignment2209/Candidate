@@ -1,0 +1,24 @@
+
+public class Candidate {
+
+    public Candidate(String name, String gender, Integer eS) throws InvalidSalaryException {
+        this.name = name;
+        this.gender = gender;
+        if(eS<10000){
+            throw new InvalidSalaryException("Sal cannot be less than 10000");
+        }else {this.expectedSalary = eS;}
+    }
+
+    private String name;
+    private String gender;
+    private Integer expectedSalary;
+
+    @Override
+    public String toString() {
+        return "Candidate{" +
+                "name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", expectedSalary=" + expectedSalary +
+                '}';
+    }
+}
